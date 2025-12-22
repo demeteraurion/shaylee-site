@@ -94,7 +94,7 @@
         }
 
         .grad-text {
-            background: linear-gradient(to right, #ff0080, #7928ca);
+            background: linear-gradient(to right, #89E362, #0EA6C4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -125,11 +125,18 @@
         <div class="absolute -top-10 -left-10 sticker opacity-50 hidden md:block">
             <i data-lucide="flower" class="w-24 h-24 text-pink-400"></i>
         </div>
-        <div class="absolute top-20 -right-10 sticker hidden md:block">
+        <div class="absolute top-20 -right-20 sticker hidden md:block">
             <i data-lucide="smile" class="w-32 h-32 text-yellow-400"></i>
         </div>
 
         <div class="brutal-card p-8 md:p-16 bg-white relative z-10">
+            <!-- Polaroid photo -->
+            <div class="hidden md:block absolute top-60 right-[30px] rotate-6">
+                <div class="bg-white border-4 border-black shadow-[8px_8px_0_#000] p-4 w-80">
+                    <img src="images/polaroid.jpg" alt="Studio or artwork photo" class="w-full h-64 object-cover border-2 border-black" />
+                    <div class="mt-4 text-base font-bold text-center">hi from my world ✿</div>
+                </div>
+            </div>
             <h1 class="text-6xl md:text-9xl font-black mb-4 leading-none grad-text">Shaylee<br>Smith</h1>
             <p class="text-xl md:text-2xl font-bold bg-black text-white inline-block px-4 py-2 mb-8">
                 Painter • Game Maker • Professional Tinkerer
@@ -176,17 +183,17 @@
             </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <div class="placeholder-image rotate-[-2deg]">
-                    <span class="text-white font-bold bg-black/50 p-2"><img src="images/paint1.jpg" /></span>
+                <div class="placeholder-image rotate-[-2deg] overflow-hidden">
+                    <img src="images/paint1.jpg" alt="Painting 1" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="placeholder-image rotate-[3deg] bg-green-400">
-                    <span class="text-white font-bold bg-black/50 p-2"><img src="images/paint2.jpg" /></span>
+                <div class="placeholder-image rotate-[3deg] bg-green-400 overflow-hidden">
+                    <img src="images/paint2.jpg" alt="Painting 2" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="placeholder-image rotate-[1deg] bg-yellow-400">
-                    <span class="text-white font-bold bg-black/50 p-2"><img src="images/paint3.jpg" /></span>
+                <div class="placeholder-image rotate-[1deg] bg-yellow-400 overflow-hidden">
+                    <img src="images/paint3.jpg" alt="Painting 3" class="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div class="placeholder-image rotate-[-3deg] bg-purple-400">
-                    <span class="text-white font-bold bg-black/50 p-2"><img src="images/paint4.jpg" /></span>
+                <div class="placeholder-image rotate-[-3deg] bg-purple-400 overflow-hidden">
+                    <img src="images/paint4.jpg" alt="Painting 4" class="w-full h-full object-cover" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -202,24 +209,24 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <!-- Project 1 -->
             <div class="brutal-card p-6 bg-lime-100 flex flex-col">
-                <div class="placeholder-image mb-4 bg-lime-500">
-                    <i data-lucide="bug" class="w-12 h-12 text-white"></i>
+                <div class="placeholder-image mb-4 bg-lime-500 overflow-hidden">
+                   <img src="images/screen1.png" alt="Flutterjar screenshot" class="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <h3 class="text-xl font-bold mb-2">Flutterjar</h3>
                 <p class="text-sm flex-grow">A cozy terrarium game about collecting bugs, caring for them, and watching a tiny ecosystem grow.</p>
             </div>
             <!-- Project 2 -->
             <div class="brutal-card p-6 bg-purple-100 flex flex-col">
-                <div class="placeholder-image mb-4 bg-purple-500">
-                    <i data-lucide="search" class="w-12 h-12 text-white"></i>
+                <div class="placeholder-image mb-4 bg-purple-500 overflow-hidden">
+                    <img src="images/screen2.png" alt="Ashgrove Ritual screenshot" class="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <h3 class="text-xl font-bold mb-2">Ashgrove Ritual</h3>
                 <p class="text-sm flex-grow">A narrative mystery involving documents, puzzles, and occult investigation.</p>
             </div>
             <!-- Project 3 -->
             <div class="brutal-card p-6 bg-orange-100 flex flex-col">
-                <div class="placeholder-image mb-4 bg-orange-500">
-                    <i data-lucide="coffee" class="w-12 h-12 text-white"></i>
+                <div class="placeholder-image mb-4 bg-orange-500 overflow-hidden">
+                     <img src="images/screen3.png" alt="Culinary Codex screenshot" class="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <h3 class="text-xl font-bold mb-2">Culinary Codex</h3>
                 <p class="text-sm flex-grow">A café management prototype centered on emotions, rituals, and food.</p>
@@ -228,7 +235,7 @@
 
         <div class="brutal-card p-8 bg-black text-white text-center">
             <p class="text-xl mb-6 font-bold italic">"I like projects that reward curiosity, observation, and taking things at your own pace."</p>
-            <a href="https://demeteraurion.itch.io" class="inline-block bg-white text-black px-8 py-4 font-black text-2xl hover:bg-yellow-400 transition-colors border-4 border-white hover:border-black">
+            <a href="https://demeteraurion.itch.io" class="inline-block bg-white text-black px-8 py-4 font-black text-2xl hover:bg-yellow-400 transition-colors border-4 border-white hover:border-black" target="_blank" rel="noreferrer">
                 PLAY ON ITCH.IO
             </a>
         </div>
@@ -258,15 +265,15 @@
                     <div class="space-y-4 font-bold text-lg">
                         <div class="flex items-center gap-2">
                             <i data-lucide="mail"></i>
-                            <a href="#" class="hover:underline">contact @ shayleesmith.com</a>
+                            <a href="mailto:contact@shayleesmith.com" class="hover:underline">contact@shayleesmith.com</a>
                         </div>
                         <div class="flex items-center gap-2">
                             <i data-lucide="globe"></i>
-                            <a href="https://demeteraurion.itch.io" class="hover:underline">demeteraurion.itch.io</a>
+                            <a href="https://demeteraurion.itch.io" class="hover:underline" target="_blank" rel="noreferrer">demeteraurion.itch.io</a>
                         </div>
                         <div class="flex items-center gap-2">
                             <i data-lucide="instagram"></i>
-                            <a href="https://www.instagram.com/demeter_aurion" class="hover:underline">@demeter_aurion</a>
+                            <a href="https://www.instagram.com/demeter_aurion" class="hover:underline" target="_blank" rel="noreferrer">@demeter_aurion</a>
                         </div>
                     </div>
                 </div>
@@ -294,13 +301,15 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Simple smooth scroll
+        // Simple smooth scroll (only for real section links)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                const target = document.querySelector(href);
+                if (!target) return;
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
