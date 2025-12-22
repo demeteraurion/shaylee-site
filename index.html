@@ -131,9 +131,18 @@
 
         <div class="brutal-card p-8 md:p-16 bg-white relative z-10">
             <!-- Polaroid photo -->
-            <div class="hidden md:block absolute top-60 right-[30px] rotate-6">
+            <!-- Small screens: show inline so it can't cover text -->
+            <div class="block lg:hidden mt-8">
+                <div class="mx-auto bg-white border-4 border-black shadow-[8px_8px_0_#000] p-4 w-80 max-w-full rotate-2">
+                    <img src="images/polaroid.jpg" alt="Studio or artwork photo" class="w-full h-64 object-cover border-2 border-black" loading="lazy" />
+                    <div class="mt-4 text-base font-bold text-center">hi from my world ✿</div>
+                </div>
+            </div>
+
+            <!-- Large screens: float in the whitespace on the right -->
+            <div class="hidden lg:block absolute top-60 right-[30px] rotate-6">
                 <div class="bg-white border-4 border-black shadow-[8px_8px_0_#000] p-4 w-80">
-                    <img src="images/polaroid.jpg" alt="Studio or artwork photo" class="w-full h-64 object-cover border-2 border-black" />
+                    <img src="images/polaroid.jpg" alt="Studio or artwork photo" class="w-full h-64 object-cover border-2 border-black" loading="lazy" />
                     <div class="mt-4 text-base font-bold text-center">hi from my world ✿</div>
                 </div>
             </div>
