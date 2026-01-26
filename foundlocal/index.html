@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoundLocal | Be Easy for AI to Trust and Cite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .bg-dot-pattern {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .step-number {
+            -webkit-text-stroke: 1px #cbd5e1;
+            color: transparent;
+        }
+        /* Chart Container Styling - Mandatory Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container { height: 300px; }
+        }
+        .view-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-shadow {
+            box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.1);
+        }
+    </style>
+    <!-- Chosen Palette: FoundLocal Indigo (Indigo: #4f46e5, Slate: #0f172a, White: #ffffff) -->
+    <!-- Application Structure Plan: 
+         The SPA is structured as a 'Diagnostic Journey' to educate and convert.
+         1. Hero Section: Focuses on the "Search Gap" and the transition from links to AI answers.
+         2. Risk Simulator: An interactive A/B toggle showing how AI "hedges" or omits businesses when data is unclear.
+         3. The Trust Matrix (Viz): A Radar chart visualizing the 7-point audit scoring system used in the actual report.
+         4. Process Breakdown: Explains the Phase 1-3 methodology (Target State, Gap Discovery, MVC Roadmap).
+         5. Qualification Checklist: Allows users to see if their specific business model fits the audit.
+         6. Pricing/CTA: Clear, high-impact one-time investment section.
+    -->
+    <!-- Visualization & Content Choices:
+         - Risk Simulator: Contrasts 'Legacy List Search' with 'Generative AI Response' using a generic professional service example.
+         - Pillar Chart: Radar chart (Chart.js) mapping Entity Clarity, Offering, Geography, Structure, Trust, Technical, and Consistency.
+         - Interaction: Dynamic chart updates to show the "Unoptimized" vs "Audit-Ready" score improvements.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Lucide icons used via external script. -->
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-2 rounded-xl">
+                    <i data-lucide="map-pin" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight text-slate-900">Found<span class="text-indigo-600">Local</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-bold text-slate-600">
+                <a href="#problem" class="hover:text-indigo-600 transition">The Problem</a>
+                <a href="#diagnostic" class="hover:text-indigo-600 transition">The Diagnostic</a>
+                <a href="#process" class="hover:text-indigo-600 transition">How It Works</a>
+                <a href="#pricing" class="hover:text-indigo-600 transition">Pricing</a>
+            </div>
+            <a href="#pricing" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition shadow-lg shadow-indigo-100">
+                Request Audit
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-44 pb-32 px-6 bg-dot-pattern border-b border-slate-100">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-bold mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                FoundLocal Interpretability Diagnostic
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-[1.1]">
+                Stop being the best kept <br>
+                <span class="text-indigo-600">secret in your city.</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                When customers ask AI assistants for a recommendation, they don’t scroll through websites anymore. 
+                They get a definitive answer. <strong>FoundLocal</strong> helps your website communicate clearly so AI systems can understand and accurately describe your business.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#pricing" class="bg-slate-900 hover:bg-black text-white px-10 py-5 rounded-2xl text-lg font-bold transition shadow-xl">
+                    Get My GEO Audit
+                </a>
+                <a href="#problem" class="bg-white border-2 border-slate-100 text-slate-700 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-50 transition">
+                    See the "Search Gap"
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: The Problem (Simulator) -->
+    <section id="problem" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-8 italic">The AI Interpretation Gap</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        For decades, search was about <strong>links</strong>. Now, it is about <strong>synthesis</strong>. If an AI tool isn’t fully confident about what you offer or where you’re located, it may omit you to play it safe.
+                    </p>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-2xl step-number italic">01</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Entity Confusion</h3>
+                                <p class="text-slate-500 text-sm italic">"Is this business a specialist or a generalist?"</p>
+                                <p class="text-slate-600 mt-2">When different sites describe you differently, AI gets confused. We audit your cross-platform consistency to ensure your identity is clear.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-2xl step-number italic">02</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Geographic Gaps</h3>
+                                <p class="text-slate-500 text-sm italic">"Where exactly do they serve clients?"</p>
+                                <p class="text-slate-600 mt-2">Without explicit location signals, AI cannot recommend you for local queries. We identify the missing "anchors" that prove where you operate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5">
+                    <div class="bg-slate-900 p-8 rounded-[2rem] shadow-2xl relative">
+                        <div class="absolute top-4 right-8 flex gap-3">
+                            <button onclick="updateSim('legacy')" id="btn-legacy" class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 border-b border-indigo-400 pb-1 transition-all">Legacy Search</button>
+                            <button onclick="updateSim('ai')" id="btn-ai" class="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-all">AI Response</button>
+                        </div>
+                        
+                        <div class="h-[350px] mt-10 relative overflow-hidden">
+                            <!-- Legacy View -->
+                            <div id="view-legacy" class="view-transition absolute inset-0">
+                                <div class="space-y-6">
+                                    <div class="opacity-70">
+                                        <div class="text-blue-400 text-sm underline mb-1">Main Street Professional Clinic</div>
+                                        <div class="text-[10px] text-slate-500">www.mainstreetclinic.com</div>
+                                    </div>
+                                    <div class="opacity-50">
+                                        <div class="text-blue-400 text-sm underline mb-1">Our Services - Family Practice</div>
+                                        <div class="text-[10px] text-slate-500">www.mainstreetclinic.com/services</div>
+                                    </div>
+                                    <div class="opacity-30">
+                                        <div class="text-blue-400 text-sm underline mb-1">Business Registration Details</div>
+                                        <div class="text-[10px] text-slate-500">www.local-directory.com/main-street</div>
+                                    </div>
+                                </div>
+                                <p class="mt-20 text-[10px] text-slate-500 italic uppercase tracking-widest leading-relaxed">The user must click multiple links to verify your details.</p>
+                            </div>
+
+                            <!-- AI View -->
+                            <div id="view-ai" class="view-transition absolute inset-0 opacity-0 translate-y-4 pointer-events-none">
+                                <div class="flex gap-3 mb-4">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0">AI</div>
+                                    <div class="bg-slate-800 p-4 rounded-xl border border-white/5 text-sm text-slate-300 leading-relaxed">
+                                        "Main Street Clinic appears to be a local practice, but their specific service area is <span class="text-red-400 font-bold">unclear</span>. I cannot confirm if they accept new patients today. I can’t confidently recommend a specific clinic, as key details like hours and exact location are not clearly verified."
+                                    </div>
+                                </div>
+                                <p class="mt-8 text-[10px] text-red-500 font-bold uppercase tracking-widest leading-relaxed">The AI hedges or stays generic. You lose the chance to be clearly included.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: The Trust Matrix (Radar Chart) -->
+    <section id="diagnostic" class="py-32 px-6 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4 italic">The AI Trust Matrix</h2>
+                <p class="text-slate-600 max-w-xl mx-auto leading-relaxed italic">We score your business across the 7 critical areas AI systems use to form confident, accurate descriptions of your brand.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-slate-100 flex flex-col items-center">
+                    <div class="chart-container">
+                        <canvas id="scoreRadar"></canvas>
+                    </div>
+                    <div class="mt-12 flex gap-10">
+                        <button onclick="setScore('weak')" id="score-weak" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition">Initial Score</button>
+                        <button onclick="setScore('strong')" id="score-strong" class="text-[10px] font-bold uppercase tracking-widest text-indigo-600 border-b border-indigo-600 transition">Optimized Score</button>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+                        <div class="bg-indigo-50 p-3 rounded-xl h-fit text-indigo-600">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">Entity Clarity</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">We audit how AI categorizes you across the web to prevent role-blending and confusion.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+                        <div class="bg-indigo-50 p-3 rounded-xl h-fit text-indigo-600">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">Geographic Readiness</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">We identify missing location anchors that help AI systems accurately include you in local responses.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+                        <div class="bg-indigo-50 p-3 rounded-xl h-fit text-indigo-600">
+                            <i data-lucide="message-square" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">Trust Signals</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">We analyze your authorship, dates, and "proof" signals that AI models use to verify authority.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: The Process -->
+    <section id="process" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-slate-900 italic mb-4">Inside the Audit</h2>
+                <p class="text-slate-600">A manual, research-backed report. No generic software output.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-4">Phase 1</div>
+                    <h4 class="text-xl font-bold mb-4 italic">Target State Definition</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">We write the "Ideal AI Response" for your brand. This becomes our North Star for every technical recommendation.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-4">Phase 2</div>
+                    <h4 class="text-xl font-bold mb-4 italic">Gap Discovery</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">We identify where AI confidence breaks down—from missing service area facts to inconsistent business descriptions.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-4">Phase 3</div>
+                    <h4 class="text-xl font-bold mb-4 italic">Action Roadmap</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">We provide a "Minimal Viable Clarity" (MVC) roadmap. High-impact changes you can apply to your site immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: FAQ -->
+    <section class="py-32 px-6 bg-slate-900 text-white rounded-[4rem] mx-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 italic">Frequently Asked Questions</h2>
+                <p class="text-slate-300 max-w-xl mx-auto leading-relaxed">Clear answers to common questions about the GEO Diagnostic and who it’s designed for.</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h4 class="font-bold mb-2">Is this an SEO audit?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">No. This audit focuses on how AI systems interpret and describe your business. It does not analyze rankings, keywords, backlinks, or traffic performance.</p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h4 class="font-bold mb-2">Who is this audit best for?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">This audit is best for professional and local service businesses where accuracy and trust matter—such as medical, legal, financial, and other client-facing services.</p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h4 class="font-bold mb-2">Will this help me get more traffic or rankings?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">This audit does not promise traffic or ranking improvements. Its purpose is to reduce ambiguity so AI systems can accurately explain your business when generating answers or recommendations.</p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h4 class="font-bold mb-2">What do you need from me to start?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">We only need your website URL and basic business details. No access to analytics, CMS, or accounts is required.</p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h4 class="font-bold mb-2">How is this different from using an AI tool myself?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">This audit applies a structured research framework to evaluate clarity, confidence, and risk across your entire site. It focuses on diagnosis and prioritization, not automated summaries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Pricing -->
+    <section id="pricing" class="py-32 px-6 bg-dot-pattern">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white border-2 border-slate-900 rounded-[3rem] overflow-hidden shadow-2xl relative">
+                <div class="absolute top-8 right-8 bg-indigo-600 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Introductory Offer</div>
+                
+                <div class="p-12 md:p-20 border-b border-slate-100">
+                    <h2 class="text-4xl font-black text-slate-900 mb-6 italic">GEO Diagnostic Audit</h2>
+                    <p class="text-slate-500 text-xl mb-6 leading-relaxed">A manual, expert-led analysis of your business's AI interpretability. You receive a client-ready PDF report and a prioritized action roadmap.</p>
+                    <p class="text-sm text-slate-500 mb-10 italic">Typical delivery: 3–5 business days. All we need is your website URL and basic business details.</p>
+                    <div class="flex items-baseline gap-3 mb-4">
+                        <span class="text-3xl font-bold text-slate-400 line-through">$495</span>
+                        <span class="text-7xl font-black text-slate-900 tracking-tighter">$295</span>
+                        <span class="text-slate-400 font-bold uppercase tracking-widest text-sm">Intro Offer · One-Time</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-indigo-600 font-bold text-sm tracking-wide">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i> NO MONTHLY RETAINERS
+                    </div>
+                </div>
+
+                <div class="p-12 md:p-20 bg-slate-50/50">
+                    <div class="grid md:grid-cols-2 gap-8 mb-16">
+                        <div class="flex gap-4 items-center">
+                            <div class="bg-emerald-100 p-1.5 rounded-full text-emerald-600">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-slate-700 text-sm">Target AI State Definition</span>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="bg-emerald-100 p-1.5 rounded-full text-emerald-600">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-slate-700 text-sm">7-Point Clarity Scoring</span>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="bg-emerald-100 p-1.5 rounded-full text-emerald-600">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-slate-700 text-sm">Risk Identification Roadmap</span>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="bg-emerald-100 p-1.5 rounded-full text-emerald-600">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-slate-700 text-sm">Minimal Viable Clarity Actions</span>
+                        </div>
+                    </div>
+                    <button class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-8 rounded-2xl text-2xl font-black transition shadow-xl shadow-indigo-100 mb-8">Request My GEO Audit</button>
+                    <p class="text-center text-slate-400 text-xs font-medium uppercase tracking-widest">Introductory pricing · Limited to 4 engagements per month for research quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-slate-100 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
+                <div class="flex items-center gap-2">
+                    <div class="bg-slate-900 p-2 rounded-xl">
+                        <i data-lucide="map-pin" class="text-white w-4 h-4"></i>
+                    </div>
+                    <span class="text-xl font-black tracking-tight text-slate-900">Found<span class="text-indigo-600">Local</span></span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium italic">Making local professionals easy for AI to trust and recommend.</p>
+                <div class="flex gap-8 text-sm font-bold text-slate-400 tracking-widest">
+                    <a href="#" class="hover:text-indigo-600 transition">TERMS</a>
+                    <a href="#" class="hover:text-indigo-600 transition">PRIVACY</a>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-200">
+                <p class="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.2em] text-center max-w-2xl mx-auto">
+                    Note: FoundLocal provides a diagnostic research report. AI-generated answers are controlled by third-party systems and results may vary based on market evolution. This audit focuses on interpretability, not ranking guarantees.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- 1. Simulation Logic ---
+        function updateSim(mode) {
+            const vLegacy = document.getElementById('view-legacy');
+            const vAi = document.getElementById('view-ai');
+            const bLegacy = document.getElementById('btn-legacy');
+            const bAi = document.getElementById('btn-ai');
+
+            if (mode === 'legacy') {
+                vLegacy.style.opacity = '1'; vLegacy.style.transform = 'translateY(0)'; vLegacy.style.pointerEvents = 'auto';
+                vAi.style.opacity = '0'; vAi.style.transform = 'translateY(1rem)'; vAi.style.pointerEvents = 'none';
+                bLegacy.classList.add('text-indigo-400', 'border-indigo-400'); bLegacy.classList.remove('text-slate-500');
+                bAi.classList.remove('text-indigo-400', 'border-indigo-400'); bAi.classList.add('text-slate-500');
+            } else {
+                vAi.style.opacity = '1'; vAi.style.transform = 'translateY(0)'; vAi.style.pointerEvents = 'auto';
+                vLegacy.style.opacity = '0'; vLegacy.style.transform = 'translateY(-1rem)'; vLegacy.style.pointerEvents = 'none';
+                bAi.classList.add('text-indigo-400', 'border-indigo-400'); bAi.classList.remove('text-slate-500');
+                bLegacy.classList.remove('text-indigo-400', 'border-indigo-400'); bLegacy.classList.add('text-slate-500');
+            }
+        }
+
+        // --- 2. Radar Chart (Scoring Matrix) ---
+        let radarChart;
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('scoreRadar').getContext('2d');
+            
+            // Representative data for unoptimized vs optimized local businesses
+            const weakData = [3, 2, 1, 3, 2, 3, 2]; 
+            const strongData = [5, 5, 5, 5, 5, 5, 5];
+
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'ENTITY CLARITY', 
+                        'OFFERING DEFINITION', 
+                        'GEOGRAPHIC ANCHORS', 
+                        'CONTENT STRUCTURE', 
+                        'TRUST SIGNALS', 
+                        'VISIBILITY', 
+                        'CONSISTENCY'
+                    ],
+                    datasets: [{
+                        label: 'Audit Score',
+                        data: strongData,
+                        fill: true,
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        borderColor: '#4f46e5',
+                        pointBackgroundColor: '#4f46e5',
+                        pointBorderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(15, 23, 42, 0.05)' },
+                            grid: { color: 'rgba(15, 23, 42, 0.05)' },
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            ticks: { stepSize: 1, display: false },
+                            pointLabels: {
+                                font: { family: "'Plus Jakarta Sans', sans-serif", size: 10, weight: '800' },
+                                color: '#94a3b8',
+                                padding: 15
+                            }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        });
+
+        function setScore(state) {
+            const vals = state === 'weak' ? [3, 2, 1, 3, 2, 3, 2] : [5, 5, 5, 5, 5, 5, 5];
+            radarChart.data.datasets[0].data = vals;
+            radarChart.data.datasets[0].backgroundColor = state === 'weak' ? 'rgba(156, 163, 175, 0.1)' : 'rgba(79, 70, 229, 0.1)';
+            radarChart.data.datasets[0].borderColor = state === 'weak' ? '#94a3b8' : '#4f46e5';
+            radarChart.data.datasets[0].pointBackgroundColor = state === 'weak' ? '#94a3b8' : '#4f46e5';
+            radarChart.update();
+
+            document.getElementById('score-weak').classList.toggle('text-slate-400', state !== 'weak');
+            document.getElementById('score-weak').classList.toggle('text-indigo-600', state === 'weak');
+            document.getElementById('score-weak').classList.toggle('border-b', state === 'weak');
+            document.getElementById('score-weak').classList.toggle('border-indigo-600', state === 'weak');
+
+            document.getElementById('score-strong').classList.toggle('text-slate-400', state !== 'strong');
+            document.getElementById('score-strong').classList.toggle('text-indigo-600', state === 'strong');
+            document.getElementById('score-strong').classList.toggle('border-b', state === 'strong');
+            document.getElementById('score-strong').classList.toggle('border-indigo-600', state === 'strong');
+        }
+
+        // --- 3. Qualification Checklist ---
+        function toggleCheck(el) {
+            const box = el.querySelector('.check-box');
+            const alert = document.getElementById('check-alert');
+            
+            if (box.classList.contains('text-transparent')) {
+                box.classList.remove('text-transparent', 'border-white/20');
+                box.classList.add('text-indigo-400', 'border-indigo-400', 'bg-white/10');
+            } else {
+                box.classList.add('text-transparent', 'border-white/20');
+                box.classList.remove('text-indigo-400', 'border-indigo-400', 'bg-white/10');
+            }
+
+            const count = document.querySelectorAll('.check-box:not(.text-transparent)').length;
+            alert.style.opacity = count >= 2 ? '1' : '0';
+        }
+    </script>
+</body>
+</html>
