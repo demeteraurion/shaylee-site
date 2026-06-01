@@ -571,21 +571,28 @@
       display: grid;
       gap: 16px;
       padding: 20px;
-      background:
-        linear-gradient(135deg, rgba(52, 245, 169, .34), rgba(53, 200, 255, .22)),
-        #fff;
+      background: #fffdf2;
     }
 
-    .shop-marquee {
+    .shop-banner-link {
+      display: block;
       border: 3px solid var(--line);
-      background: var(--ink);
-      color: var(--green);
-      padding: 18px;
-      font-family: Impact, "Arial Black", sans-serif;
-      font-size: clamp(2.1rem, 6vw, 4.8rem);
-      line-height: .9;
-      text-transform: uppercase;
-      text-shadow: 3px 3px 0 #264f1c;
+      background: #efe6d1;
+      box-shadow: 4px 4px 0 var(--line);
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .shop-banner-link:hover,
+    .shop-banner-link:focus-visible {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .shop-banner {
+      width: 100%;
+      height: auto;
     }
 
     .shop-tags {
@@ -897,7 +904,7 @@
                   <li>Browser game</li>
                   <li>Mystery</li>
                 </ul>
-                <a class="btn secondary" href="https://demeteraurion.itch.io/final-settlement">Play Final Settlement on Itch.io</a>
+                <a class="btn secondary" href="https://demeteraurion.itch.io/final-settlement" target="_blank" rel="noopener noreferrer">Play Final Settlement on Itch.io</a>
               </div>
             </article>
 
@@ -909,7 +916,7 @@
                   <li>Plant care</li>
                   <li>Utility</li>
                 </ul>
-                <a href="https://plants.shayleesmith.com/">Open Root Record Plant Tracker</a>
+                <a href="https://plants.shayleesmith.com/" target="_blank" rel="noopener noreferrer">Open Root Record Plant Tracker</a>
               </article>
               <article class="mini-project">
                 <h3>Flutterjar</h3>
@@ -927,7 +934,7 @@
                   <li>Narrative</li>
                 </ul>
               </article>
-              <a class="btn" href="https://demeteraurion.itch.io/">View More Games on Itch.io</a>
+              <a class="btn" href="https://demeteraurion.itch.io/" target="_blank" rel="noopener noreferrer">View More Games on Itch.io</a>
             </div>
           </div>
         </div>
@@ -951,12 +958,14 @@
               <li>* Stickers, plant parent gifts, and shop drops</li>
             </ul>
             <div class="actions" style="margin-top: 20px;">
-              <a class="btn secondary" href="https://www.etsy.com/shop/StaticSymbiosis">Visit Static Symbiosis on Etsy</a>
+              <a class="btn secondary" href="https://www.etsy.com/shop/StaticSymbiosis" target="_blank" rel="noopener noreferrer">Visit Static Symbiosis on Etsy</a>
             </div>
           </div>
 
           <div class="window shop-preview" aria-label="Static Symbiosis shop focus">
-            <div class="shop-marquee">Botanical Oddities<br>Useful Plant Things</div>
+            <a class="shop-banner-link" href="https://www.etsy.com/shop/StaticSymbiosis" target="_blank" rel="noopener noreferrer" aria-label="Visit Static Symbiosis on Etsy">
+              <img class="shop-banner" src="images/static-symbiosis-banner.png" alt="Static Symbiosis banner with Venus flytrap illustration and the text Biology Graphics, Plant Goods, Lo-Fi Print Design.">
+            </a>
             <ul class="shop-tags">
               <li>Plant Parent Planners</li>
               <li>Collector Guides</li>
@@ -1019,8 +1028,8 @@
           <h3>Transmission points</h3>
           <ul class="link-list contact-links">
             <li><a href="mailto:contact@shayleesmith.com">Email // contact@shayleesmith.com</a></li>
-            <li><a href="https://demeteraurion.itch.io/">Games // demeteraurion.itch.io</a></li>
-            <li><a href="https://www.instagram.com/demeter_aurion">Social // @demeter_aurion</a></li>
+            <li><a href="https://demeteraurion.itch.io/" target="_blank" rel="noopener noreferrer">Games // demeteraurion.itch.io</a></li>
+            <li><a href="https://www.instagram.com/demeter_aurion" target="_blank" rel="noopener noreferrer">Social // @demeter_aurion</a></li>
           </ul>
         </div>
       </div>
