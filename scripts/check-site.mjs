@@ -19,6 +19,14 @@ for (const file of htmlFiles) {
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${file}: missing title`);
   if (!/<h1(?:\s|>)/i.test(html)) errors.push(`${file}: missing h1`);
   if (!html.includes("G-C715D5HQ28")) errors.push(`${file}: missing Google Analytics measurement ID`);
+  if (file !== "404.html") {
+    if (!/<meta[^>]+name=["']description["']/i.test(html)) errors.push(`${file}: missing meta description`);
+    if (!/<link[^>]+rel=["']canonical["']/i.test(html)) errors.push(`${file}: missing canonical URL`);
+    if (!/<meta[^>]+property=["']og:title["']/i.test(html)) errors.push(`${file}: missing Open Graph title`);
+    if (!/<meta[^>]+property=["']og:image["']/i.test(html)) errors.push(`${file}: missing Open Graph image`);
+    if (!/<meta[^>]+name=["']twitter:card["']/i.test(html)) errors.push(`${file}: missing Twitter card`);
+    if (!/<script[^>]+type=["']application\/ld\+json["']/i.test(html)) errors.push(`${file}: missing JSON-LD`);
+  }
   for (const match of html.matchAll(/<img\b([^>]+)>/gi)) {
     if (!/\balt=["'][^"']*["']/i.test(match[1])) errors.push(`${file}: image missing alt text`);
     if (!/\bwidth=["']?\d+/i.test(match[1]) || !/\bheight=["']?\d+/i.test(match[1])) warnings.push(`${file}: image missing explicit width or height`);
