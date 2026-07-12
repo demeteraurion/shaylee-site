@@ -215,7 +215,7 @@
       position: relative;
       display: inline-flex;
       align-items: center;
-      min-height: 32px;
+      min-height: 44px;
       padding: 2px 0;
       text-decoration: none;
       transition: color .16s ease, transform .16s ease;
@@ -467,13 +467,20 @@
 
     .featured-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 18px;
     }
 
     .feature-main,
     .feature-side {
       padding: 18px;
+    }
+
+    .feature-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+      gap: 24px;
+      align-items: center;
     }
 
     .project-media {
@@ -509,7 +516,7 @@
     }
 
     .project-copy {
-      padding-top: 16px;
+      padding-top: 0;
     }
 
     h3 {
@@ -544,9 +551,18 @@
       gap: 18px;
     }
 
+    .feature-side.stack {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: stretch;
+    }
+
+    .feature-side.stack > .btn {
+      grid-column: 1 / -1;
+    }
+
     .mini-project {
       display: grid;
-      grid-template-columns: minmax(110px, .72fr) minmax(0, 1.28fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 14px;
       padding: 16px;
       border: 3px solid var(--line);
@@ -554,7 +570,8 @@
     }
 
     .mini-media {
-      min-height: 130px;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
       border: 2px solid var(--line);
       background: var(--soft);
       overflow: hidden;
@@ -583,7 +600,14 @@
     }
 
     .mini-copy {
-      align-self: center;
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+    }
+
+    .mini-copy .project-links {
+      margin-top: auto;
+      padding-top: 2px;
     }
 
     .project-links {
@@ -868,6 +892,11 @@
         grid-template-columns: 1fr;
       }
 
+      .feature-main,
+      .feature-side.stack {
+        grid-template-columns: 1fr;
+      }
+
       .portrait {
         margin: 12px auto 0;
         transform: rotate(1deg);
@@ -891,6 +920,12 @@
 
       .signal-grid .btn {
         grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 781px) and (max-width: 900px) {
+      .feature-main {
+        grid-template-columns: 1fr;
       }
     }
 
