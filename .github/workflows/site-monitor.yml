@@ -1,0 +1,26 @@
+name: Live site monitor
+
+on:
+  schedule:
+    - cron: "17 13 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify deployed foundation files
+        shell: bash
+        run: |
+          curl --fail --silent --show-error https://shayleesmith.com/robots.txt > /dev/null
+          curl --fail --silent --show-error https://shayleesmith.com/sitemap.xml > /dev/null
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' https://shayleesmith.com/definitely-not-a-real-page)" = "404"
+      - name: Run Lighthouse against the live site
+        run: npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.json

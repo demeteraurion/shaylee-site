@@ -13,17 +13,29 @@
   <meta property="og:title" content="Shaylee Smith | Indie Games & Static Symbiosis">
   <meta property="og:description" content="Cozy dark browser games, plant-obsessed printables, botanical digital goods, and strange little systems.">
   <meta property="og:image" content="https://shayleesmith.com/images/og-image.jpg">
-  <meta property="og:image:alt" content="Shaylee Smith Studio portfolio preview">
+  <meta property="og:image:secure_url" content="https://shayleesmith.com/images/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shaylee Smith Studio preview featuring indie games, Static Symbiosis, and botanical artwork">
   <meta property="og:url" content="https://shayleesmith.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shaylee Smith | Indie Games & Static Symbiosis">
   <meta name="twitter:description" content="Cozy dark browser games, plant-obsessed printables, botanical digital goods, and strange little systems.">
   <meta name="twitter:image" content="https://shayleesmith.com/images/og-image.jpg">
-  <meta name="twitter:image:alt" content="Shaylee Smith Studio portfolio preview">
+  <meta name="twitter:image:alt" content="Shaylee Smith Studio preview featuring indie games, Static Symbiosis, and botanical artwork">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C715D5HQ28"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C715D5HQ28');
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -533,9 +545,85 @@
     }
 
     .mini-project {
+      display: grid;
+      grid-template-columns: minmax(110px, .72fr) minmax(0, 1.28fr);
+      gap: 14px;
       padding: 16px;
       border: 3px solid var(--line);
       background: #d8ff4f;
+    }
+
+    .mini-media {
+      min-height: 130px;
+      border: 2px solid var(--line);
+      background: var(--soft);
+      overflow: hidden;
+    }
+
+    .mini-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .root-record-media {
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), var(--mint));
+    }
+
+    .root-record-media svg {
+      width: 62%;
+      max-width: 120px;
+      stroke: var(--line);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mini-copy {
+      align-self: center;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-weight: 850;
+    }
+
+    .project-links a:not(.btn) {
+      text-decoration-thickness: 2px;
+    }
+
+    .signal-strip {
+      border-block: 3px solid var(--line);
+      background: var(--soft);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .signal-grid p {
+      margin: 0;
+      font-weight: 750;
+    }
+
+    .signal-label {
+      padding: 5px 9px;
+      border: 2px solid var(--line);
+      background: var(--gold);
+      box-shadow: 3px 3px 0 var(--line);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .mini-project:nth-child(2) {
@@ -796,6 +884,14 @@
       .btn {
         flex: 1 1 160px;
       }
+
+      .signal-grid {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .signal-grid .btn {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 480px) {
@@ -804,12 +900,61 @@
       }
 
       .nav-links {
+        flex-wrap: nowrap;
         gap: 10px 12px;
         font-size: .82rem;
+        overflow-x: auto;
+        padding-bottom: 4px;
       }
 
       h1 {
         font-size: clamp(2.8rem, 18vw, 4.3rem);
+      }
+
+      body {
+        font-size: 1rem;
+        line-height: 1.62;
+      }
+
+      .hero {
+        padding: 38px 0 32px;
+      }
+
+      .hero .actions .btn {
+        flex-basis: 100%;
+      }
+
+      .hero .note {
+        width: 100%;
+      }
+
+      .portrait,
+      .window {
+        box-shadow: 4px 4px 0 var(--line);
+      }
+
+      .ticker span {
+        padding: 8px 0;
+        font-size: .78rem;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .section-head p,
+      .mini-project p,
+      .shop-note p {
+        font-size: 1rem;
+      }
+
+      .mini-project {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-media {
+        min-height: 180px;
+        max-height: 230px;
       }
 
       .shop-tags {
@@ -861,18 +1006,21 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Status: building cozy systems and strange little worlds</p>
+          <p class="eyebrow">Shaylee Smith // indie developer + digital artist</p>
           <h1>Shaylee Smith</h1>
-          <p class="lede">Indie game developer and digital artist making browser games, plant-obsessed printables, cozy systems, and strange little worlds with a soft dark edge.</p>
+          <p class="lede">Cozy systems and strange little worlds—browser games, plant tools, and botanical goods that live somewhere between useful and atmospheric.</p>
           <div class="actions">
-            <a class="btn" href="#work">View Games</a>
-            <a class="btn secondary" href="#shop">Visit Shop</a>
-            <span class="note">// games, printables, and tiny systems</span>
+            <a class="btn" href="#work">Explore the Work</a>
+            <a class="btn secondary" href="#shop">Shop Static Symbiosis</a>
+            <span class="note">// games, tools, and botanical goods</span>
           </div>
         </div>
 
         <figure class="portrait" aria-label="Portrait of Shaylee Smith">
-          <img src="https://shayleesmith.com/images/polaroid.jpg" alt="Portrait of Shaylee Smith, indie game developer and digital artist" width="896" height="1200">
+          <picture>
+            <source type="image/webp" srcset="images/polaroid.webp">
+            <img src="images/polaroid.jpg" alt="Portrait of Shaylee Smith, indie game developer and digital artist" width="896" height="1200" fetchpriority="high">
+          </picture>
           <figcaption>hi from my world</figcaption>
         </figure>
       </div>
@@ -881,6 +1029,14 @@
     <div class="ticker" aria-hidden="true">
       <span>Cozy systems // Static Symbiosis // Browser games // Soft mystery // Tiny worlds // Plant prints // Botanical goods // Cozy systems // Static Symbiosis // Browser games // Soft mystery // Tiny worlds // Plant prints // Botanical goods // </span>
     </div>
+
+    <aside class="signal-strip" aria-label="Current project signal">
+      <div class="wrap signal-grid">
+        <span class="signal-label">Current signal</span>
+        <p>Final Settlement is the latest playable world, while Flutterjar continues to grow as a gentle browser terrarium.</p>
+        <a class="btn secondary" href="projects/final-settlement.html">Enter the latest case</a>
+      </div>
+    </aside>
 
     <section id="work" aria-labelledby="work-title">
       <div class="wrap">
@@ -894,7 +1050,7 @@
           <div class="featured-grid">
             <article class="feature-main">
               <div class="project-media">
-                <img src="https://img.itch.zone/aW1nLzI3MjE0MTAyLnBuZw==/original/dgaCQL.png" alt="Final Settlement browser game preview with noir mystery artwork" width="1672" height="941">
+                <img src="https://img.itch.zone/aW1nLzI3MjE0MTAyLnBuZw==/original/dgaCQL.png" alt="Final Settlement browser game preview with noir mystery artwork" width="1672" height="941" loading="lazy">
               </div>
               <div class="project-copy">
                 <h3>Final Settlement</h3>
@@ -904,35 +1060,42 @@
                   <li>Browser game</li>
                   <li>Mystery</li>
                 </ul>
-                <a class="btn secondary" href="https://demeteraurion.itch.io/final-settlement" target="_blank" rel="noopener noreferrer">Play Final Settlement on Itch.io</a>
+                <div class="project-links">
+                  <a class="btn secondary" href="https://demeteraurion.itch.io/final-settlement" target="_blank" rel="noopener noreferrer" data-track="play_game" data-project="final-settlement">Play on Itch.io</a>
+                  <a href="projects/final-settlement.html">Project notes</a>
+                </div>
               </div>
             </article>
 
             <div class="feature-side stack">
               <article class="mini-project">
-                <h3>Root Record</h3>
-                <p>A cozy plant care tracker for watering schedules, what is due today, and keeping a collection alive without turning it into homework.</p>
-                <ul class="meta" aria-label="Project details">
-                  <li>Plant care</li>
-                  <li>Utility</li>
-                </ul>
-                <a href="https://plants.shayleesmith.com/" target="_blank" rel="noopener noreferrer">Open Root Record Plant Tracker</a>
+                <div class="mini-media root-record-media" aria-label="Root Record plant system symbol">
+                  <svg viewBox="0 0 100 100" role="img" aria-label="Plant sprout growing from a record line"><path d="M50 90V46M50 60C30 60 20 48 20 30c20 0 30 12 30 30ZM50 50c20 0 30-12 30-30-20 0-30 12-30 30ZM18 90h64"></path></svg>
+                </div>
+                <div class="mini-copy">
+                  <h3>Root Record</h3>
+                  <p>A calm plant care tracker for schedules, what is due today, and keeping a collection alive.</p>
+                  <ul class="meta" aria-label="Project details"><li>Live tool</li><li>Plant care</li></ul>
+                  <div class="project-links"><a href="https://plants.shayleesmith.com/" target="_blank" rel="noopener noreferrer" data-track="open_tool" data-project="root-record">Open tracker</a><a href="projects/root-record.html">Project notes</a></div>
+                </div>
               </article>
               <article class="mini-project">
-                <h3>Flutterjar</h3>
-                <p>A terrarium game about collecting bugs, caring for them, and watching a tiny ecosystem grow.</p>
-                <ul class="meta" aria-label="Project details">
-                  <li>Game</li>
-                  <li>Pet sim</li>
-                </ul>
+                <div class="mini-media"><img src="images/flutterjar.webp" alt="Flutterjar terrarium with plants, bugs, and care controls" width="930" height="921" loading="lazy"></div>
+                <div class="mini-copy">
+                  <h3>Flutterjar</h3>
+                  <p>A gentle terrarium game about caring for tiny bugs and watching an ecosystem grow.</p>
+                  <ul class="meta" aria-label="Project details"><li>Playable</li><li>Pet sim</li></ul>
+                  <div class="project-links"><a href="https://demeteraurion.itch.io/flutterjar" target="_blank" rel="noopener noreferrer" data-track="play_game" data-project="flutterjar">Play in browser</a><a href="projects/flutterjar.html">Project notes</a></div>
+                </div>
               </article>
               <article class="mini-project">
-                <h3>Ashgrove Ritual</h3>
-                <p>A document-led occult mystery with puzzles, investigation, and a soft unsettling edge.</p>
-                <ul class="meta" aria-label="Project details">
-                  <li>Mystery</li>
-                  <li>Narrative</li>
-                </ul>
+                <div class="mini-media"><img src="images/ashgrove-ritual.webp" alt="Ashgrove Ritual case file showing a suspect dossier" width="1600" height="759" loading="lazy"></div>
+                <div class="mini-copy">
+                  <h3>Ashgrove Ritual</h3>
+                  <p>A document-led occult mystery with puzzles, investigation, and a soft unsettling edge.</p>
+                  <ul class="meta" aria-label="Project details"><li>Shelved</li><li>Mystery</li></ul>
+                  <div class="project-links"><a href="projects/ashgrove-ritual.html">View archived project notes</a></div>
+                </div>
               </article>
               <a class="btn" href="https://demeteraurion.itch.io/" target="_blank" rel="noopener noreferrer">View More Games on Itch.io</a>
             </div>
@@ -958,13 +1121,16 @@
               <li>* Stickers, plant parent gifts, and shop drops</li>
             </ul>
             <div class="actions" style="margin-top: 20px;">
-              <a class="btn secondary" href="https://www.etsy.com/shop/StaticSymbiosis" target="_blank" rel="noopener noreferrer">Visit Static Symbiosis on Etsy</a>
+              <a class="btn secondary" href="https://www.etsy.com/shop/StaticSymbiosis" target="_blank" rel="noopener noreferrer" data-track="visit_shop">Visit Static Symbiosis on Etsy</a>
             </div>
           </div>
 
           <div class="window shop-preview" aria-label="Static Symbiosis shop focus">
             <a class="shop-banner-link" href="https://www.etsy.com/shop/StaticSymbiosis" target="_blank" rel="noopener noreferrer" aria-label="Visit Static Symbiosis on Etsy">
-              <img class="shop-banner" src="images/static-symbiosis-banner.png" alt="Static Symbiosis banner with Venus flytrap illustration and the text Biology Graphics, Plant Goods, Lo-Fi Print Design.">
+              <picture>
+                <source type="image/webp" srcset="images/static-symbiosis-banner.webp">
+                <img class="shop-banner" src="images/static-symbiosis-banner.png" alt="Static Symbiosis banner with Venus flytrap illustration and the text Biology Graphics, Plant Goods, Lo-Fi Print Design." width="846" height="440" loading="lazy">
+              </picture>
             </a>
             <ul class="shop-tags">
               <li>Plant Parent Planners</li>
@@ -1027,9 +1193,9 @@
         <div class="window contact-panel">
           <h3>Transmission points</h3>
           <ul class="link-list contact-links">
-            <li><a href="mailto:contact@shayleesmith.com">Email // contact@shayleesmith.com</a></li>
-            <li><a href="https://demeteraurion.itch.io/" target="_blank" rel="noopener noreferrer">Games // demeteraurion.itch.io</a></li>
-            <li><a href="https://www.instagram.com/demeter_aurion" target="_blank" rel="noopener noreferrer">Social // @demeter_aurion</a></li>
+            <li><a href="mailto:contact@shayleesmith.com" data-track="contact_email">Email // contact@shayleesmith.com</a></li>
+            <li><a href="https://demeteraurion.itch.io/" target="_blank" rel="noopener noreferrer" data-track="visit_itch">Games // demeteraurion.itch.io</a></li>
+            <li><a href="https://www.instagram.com/demeter_aurion" target="_blank" rel="noopener noreferrer" data-track="visit_social">Social // @demeter_aurion</a></li>
           </ul>
         </div>
       </div>
@@ -1054,5 +1220,6 @@
       mark();
     });
   </script>
+  <script src="site.js" defer></script>
 </body>
 </html>
