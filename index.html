@@ -885,6 +885,15 @@
     }
 
     @media (max-width: 780px) {
+      .brand span:last-child {
+        font-size: 0;
+      }
+
+      .brand span:last-child::after {
+        content: "SHAYLEE_SMITH";
+        font-size: .9rem;
+      }
+
       .nav {
         align-items: flex-start;
         flex-direction: column;
