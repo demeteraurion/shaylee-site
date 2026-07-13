@@ -251,47 +251,41 @@
       min-height: 44px;
       padding: 2px 0;
       text-decoration: none;
-      transition: color .16s ease, transform .16s ease;
+      transition: color .16s ease;
     }
 
     .nav-links a::before {
       content: "";
       position: absolute;
-      inset: auto -5px 5px;
+      inset: auto -5px 8px;
       height: 12px;
       z-index: -1;
-      background: rgba(186, 255, 57, .78);
-      transform: scaleX(0) skewX(-12deg);
-      transform-origin: left center;
-      transition: transform .18s ease;
+      background: var(--green);
+      opacity: 0;
+      transform: skew(-8deg);
+      transition: opacity .16s ease;
     }
 
     .nav-links a::after {
       content: "//";
       position: absolute;
       left: 50%;
-      bottom: -18px;
+      bottom: -4px;
       color: var(--rose);
-      font-size: .74rem;
-      font-weight: 900;
       opacity: 0;
       transform: translateX(-50%) translateY(-4px);
       transition: opacity .16s ease, transform .16s ease;
     }
 
-    .nav-links a:hover {
-      color: #000;
-      transform: translateY(-2px) rotate(-1deg);
-    }
-
     .nav-links a:hover::before,
-    .nav-links a:focus-visible::before {
-      transform: scaleX(1) skewX(-12deg);
+    .nav-links a:focus-visible::before,
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      opacity: 1;
     }
 
     .nav-links a:hover::after,
     .nav-links a:focus-visible::after {
-      opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
 
@@ -895,7 +889,7 @@
       .nav-links {
         justify-content: center;
         width: 100%;
-        padding-bottom: 12px;
+        padding-bottom: 8px;
       }
 
       .hero {
