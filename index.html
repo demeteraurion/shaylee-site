@@ -9,6 +9,7 @@
   <meta name="author" content="Shaylee Smith">
   <meta name="theme-color" content="#f6f2ff">
   <link rel="canonical" href="https://shayleesmith.com/">
+  <link rel="icon" href="favicon.ico">
   <meta property="og:site_name" content="Shaylee Smith Studio">
   <meta property="og:title" content="Shaylee Smith | Indie Game Developer & Digital Artist">
   <meta property="og:description" content="Browser games, useful little systems, and strange-nature art and goods with a cozy-dark edge.">
@@ -85,7 +86,7 @@
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Final Settlement",
-                "url": "https://demeteraurion.itch.io/final-settlement"
+                "url": "https://shayleesmith.com/projects/final-settlement.html"
               },
               {
                 "@type": "ListItem",
@@ -97,13 +98,13 @@
                 "@type": "ListItem",
                 "position": 3,
                 "name": "Root Record",
-                "url": "https://plants.shayleesmith.com/"
+                "url": "https://shayleesmith.com/projects/root-record.html"
               },
               {
                 "@type": "ListItem",
                 "position": 4,
                 "name": "Flutterjar",
-                "url": "https://demeteraurion.itch.io/flutterjar"
+                "url": "https://shayleesmith.com/projects/flutterjar.html"
               },
               {
                 "@type": "ListItem",
@@ -172,6 +173,23 @@
     button:focus-visible {
       outline: 3px solid var(--blue);
       outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 10px 14px;
+      border: 3px solid var(--line);
+      background: var(--gold);
+      box-shadow: 4px 4px 0 var(--line);
+      font-weight: 900;
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
     }
 
     .wrap {
@@ -1020,7 +1038,8 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="topbar">
     <nav class="wrap nav" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Shaylee Smith home">
@@ -1036,7 +1055,7 @@
     </nav>
   </header>
 
-  <main id="top">
+  <main id="main-content">
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
@@ -1184,7 +1203,7 @@
         </div>
         <div class="window about-card">
           <div class="about-copy">
-            <p>I'm an independent game developer, digital artist, and product designer. I created the browser mysteries Final Settlement and VEILBORN, the Root Record plant-care app, and Static Symbiosis, a shop for strange-nature art and goods. Most of my work is part tool, part tiny world, and part excuse to make the details feel good.</p>
+            <p>I'm an independent game developer, digital artist, and product designer. I created the browser mystery Final Settlement, the in-development management game VEILBORN, the Root Record plant-care app, and Static Symbiosis, a shop for strange-nature art and goods. Most of my work is part tool, part tiny world, and part excuse to make the details feel good.</p>
             <div class="icon-grid" aria-label="Creative focus areas">
               <div class="icon-card">
                 <span class="icon" aria-hidden="true">

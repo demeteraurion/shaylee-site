@@ -29,6 +29,8 @@
     }
     a { color:inherit; }
     a:focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+    .skip-link { position:fixed; top:10px; left:10px; z-index:100; padding:10px 14px; border:3px solid var(--ink); background:#ffd12f; box-shadow:4px 4px 0 var(--ink); font-weight:900; transform:translateY(-150%); }
+    .skip-link:focus { transform:translateY(0); }
     .topbar { border-bottom:3px solid var(--ink); background:rgba(246,242,255,.96); }
     .nav,.wrap { width:min(960px,calc(100% - 32px)); margin:auto; }
     .nav { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
@@ -49,13 +51,14 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="topbar">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="/" aria-label="Shaylee Smith home"><span class="mark">SS</span><span>SHAYLEE_SMITH_STUDIO.EXE</span></a>
       <a href="/#contact">Contact</a>
     </nav>
   </header>
-  <main>
+  <main id="main-content">
     <div class="wrap">
       <section class="window" aria-labelledby="lost-title">
         <div class="bar">signal_error // route_not_found</div>
