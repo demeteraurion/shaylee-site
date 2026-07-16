@@ -519,7 +519,14 @@ a { color: inherit; }
   letter-spacing: .1em;
   color: rgba(65,53,38,.58);
 }
-.shop-art img { aspect-ratio: 16/7; object-fit: cover; border: 1.5px solid #453a2b; box-shadow: 5px 6px 0 rgba(69,58,43,.18); }
+.shop-art img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border: 1.5px solid #453a2b;
+  box-shadow: 5px 6px 0 rgba(69,58,43,.18);
+}
 .specimen-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
 .specimen-row span { padding: 8px; text-align: center; text-transform: uppercase; font-family: var(--font-accent), "Trebuchet MS", sans-serif; font-size: 0.94rem; border: 1px solid rgba(69,58,43,.45); background: rgba(255,250,240,.7); }
 
