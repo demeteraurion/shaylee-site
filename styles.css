@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Ranchers";
-  src: url("/fonts/ranchers-latin.woff2") format("woff2");
+  src: url("fonts/ranchers-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Englebert";
-  src: url("/fonts/englebert-latin.woff2") format("woff2");
+  src: url("fonts/englebert-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Source Sans 3";
-  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+  src: url("fonts/source-sans-3-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
@@ -328,7 +328,7 @@ a { color: inherit; }
 .sprite {
   display: inline-block;
   flex: 0 0 auto;
-  background-image: url("/images/sticker-sheet.png");
+  background-image: url("images/sticker-sheet.png");
   background-repeat: no-repeat;
   background-size: 200% 200%;
   image-rendering: pixelated;
@@ -484,6 +484,101 @@ a { color: inherit; }
 .earlier-work:focus-visible { outline: 3px solid var(--pink); outline-offset: 5px; }
 .earlier-work svg { width: 16px; height: 16px; }
 
+.systems-section { padding-block: 34px 72px; }
+.section-intro {
+  max-width: 720px;
+  margin: -8px auto 30px;
+  text-align: center;
+  color: rgba(23, 19, 34, .78);
+}
+.system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.system-card {
+  min-height: 310px;
+  padding: clamp(30px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.system-card-lime {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(84, 217, 255, .26), transparent 12rem),
+    linear-gradient(145deg, #fffdf5, rgba(200, 255, 56, .34));
+}
+.system-card-violet {
+  background:
+    radial-gradient(circle at 8% 92%, rgba(255, 98, 176, .2), transparent 12rem),
+    linear-gradient(145deg, #fffdf8, rgba(169, 104, 255, .3));
+}
+.system-kicker {
+  margin: 0 0 14px;
+  color: #624681;
+  font-family: var(--font-accent), "Trebuchet MS", sans-serif;
+  font-size: .98rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.system-card h3,
+.resources-section h2 {
+  margin: 0;
+  color: #3e285c;
+  font-family: var(--font-display), cursive;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.system-card > p:not(.system-kicker) { margin: 20px 0 24px; }
+.system-card .tag-list { margin-top: auto; margin-bottom: 0; }
+
+.resources-section {
+  margin-bottom: 24px;
+  padding: clamp(32px, 5vw, 58px);
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(30px, 5vw, 64px);
+  color: #f7f0ff;
+  background:
+    radial-gradient(circle at 4% 90%, rgba(255, 98, 176, .2), transparent 18rem),
+    radial-gradient(circle at 96% 8%, rgba(84, 217, 255, .16), transparent 18rem),
+    #171322;
+  border: 1.5px solid #715aa0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.resources-section h2 { color: white; }
+.resources-copy > p:not(.eyebrow) { margin: 22px 0 24px; color: #e9ddf6; }
+.resources-copy .text-link { color: var(--lime); }
+.resource-list { display: grid; gap: 12px; }
+.resource-item {
+  min-height: 92px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: var(--ink);
+  background: rgba(255, 250, 240, .96);
+  border: 1.5px solid #8d73aa;
+  border-radius: 16px;
+  box-shadow: 4px 5px 0 rgba(169, 104, 255, .26);
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+.resource-item:hover,
+.resource-item:focus-visible {
+  background: #f3ffbf;
+  box-shadow: 6px 7px 0 rgba(169, 104, 255, .36);
+  transform: translateY(-3px);
+}
+.resource-item:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.resource-item span { display: grid; gap: 4px; }
+.resource-item strong { font-family: var(--font-accent), "Trebuchet MS", sans-serif; font-size: 1.1rem; font-weight: 400; text-transform: uppercase; }
+.resource-item small { color: rgba(23, 19, 34, .72); font-size: .92rem; line-height: 1.4; }
+.resource-item svg { width: 21px; height: 21px; flex: 0 0 auto; }
+
 .shop-card {
   margin-top: 24px;
   display: grid;
@@ -622,6 +717,7 @@ a { color: inherit; }
 .social-links a:nth-child(1):hover, .social-links a:nth-child(1):focus-visible { background: var(--cyan); }
 .social-links a:nth-child(2):hover, .social-links a:nth-child(2):focus-visible { background: #ff9bcf; }
 .social-links a:nth-child(3):hover, .social-links a:nth-child(3):focus-visible { background: var(--lime); }
+.social-links a:nth-child(4):hover, .social-links a:nth-child(4):focus-visible { background: #9ed8ff; }
 .social-links a:hover, .social-links a:focus-visible {
   transform: translateY(-4px) rotate(-1deg);
   box-shadow: 4px 5px 0 rgba(23,19,34,.72);
@@ -644,6 +740,7 @@ a { color: inherit; }
   .featured-art { min-height: 330px; }
   .project-grid { grid-template-columns: 1fr 1fr; }
   .project-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 10px); justify-self: center; }
+  .system-grid, .resources-section { grid-template-columns: 1fr; }
   .accent-lime, .accent-violet, .accent-blue { transform: none; }
   .shop-card { grid-template-columns: 1fr; }
   .shop-art { min-height: 360px; border-left: 0; border-top: 1px dashed rgba(55,43,33,.45); }
@@ -669,6 +766,10 @@ a { color: inherit; }
   .featured h2 { font-size: clamp(3rem, 14.5vw, 4.5rem); }
   .project-grid { grid-template-columns: 1fr; }
   .project-card:last-child { grid-column: auto; max-width: none; }
+  .systems-section { padding-block: 24px 54px; }
+  .system-grid { grid-template-columns: 1fr; }
+  .system-card { min-height: auto; padding: 30px 24px; }
+  .resources-section { padding: 34px 24px; }
   .section-title-row { gap: 9px; }
   .section-title-row h2 { padding: 12px 20px 14px; font-size: 1.8rem; }
   .shop-copy { padding: 38px 24px; }
