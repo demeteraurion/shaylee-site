@@ -180,7 +180,7 @@ a { color: inherit; }
   min-height: 610px;
   padding: clamp(40px, 6vw, 68px);
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
   align-items: center;
   gap: 48px;
   overflow: hidden;
@@ -202,18 +202,6 @@ a { color: inherit; }
   border-radius: 47% 53% 64% 36% / 44% 39% 61% 56%;
   background: linear-gradient(135deg, rgba(84,217,255,.28), rgba(169,104,255,.24), rgba(255,98,176,.22));
   filter: blur(3px);
-}
-
-.hero::after {
-  content: "FIELD NOTES  •  SS_0521";
-  position: absolute;
-  left: 28px;
-  bottom: 24px;
-  font-family: var(--font-accent), "Trebuchet MS", sans-serif;
-  font-size: .88rem;
-  font-weight: 400;
-  letter-spacing: .12em;
-  color: rgba(67,48,95,.45);
 }
 
 .hero-copy, .portrait-stage { position: relative; z-index: 2; min-width: 0; }
@@ -239,13 +227,28 @@ a { color: inherit; }
 }
 
 .hero h1 {
-  font-size: clamp(4.7rem, 6.5vw, 6.4rem);
-  letter-spacing: 0.02em;
+  max-width: 690px;
+  text-transform: none;
+  text-wrap: balance;
+  font-size: clamp(3.65rem, 5.45vw, 5.35rem);
+  letter-spacing: 0.012em;
+  line-height: .94;
   color: #302052;
   text-shadow: 2px 2px 0 rgba(255,98,176,.62), 4px 4px 0 rgba(84,217,255,.46);
 }
-.hero-intro { max-width: 480px; margin: 28px 0 30px; font-family: var(--font-body), "Segoe UI", sans-serif; font-size: 1.12rem; line-height: 1.6; }
+.hero h1 span { display: block; color: #63408e; }
+.hero-intro { max-width: 620px; margin: 24px 0 26px; font-family: var(--font-body), "Segoe UI", sans-serif; font-size: 1.12rem; line-height: 1.6; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
+.hero-current {
+  max-width: 610px;
+  margin: 28px 0 0;
+  padding-top: 15px;
+  color: #554568;
+  border-top: 1px dashed rgba(67,48,95,.38);
+  font-size: .94rem;
+  line-height: 1.45;
+}
+.hero-current a { font-weight: 700; text-underline-offset: 3px; }
 
 .button {
   min-height: 48px;
@@ -309,11 +312,11 @@ a { color: inherit; }
   outline-offset: 3px;
 }
 
-.portrait-stage { position: relative; min-height: 440px; display: grid; place-items: center; }
+.portrait-stage { position: relative; min-height: 470px; display: grid; place-items: center; }
 .portrait-frame {
   position: relative;
-  z-index: 2;
-  width: min(100%, 390px);
+  z-index: 3;
+  width: min(100%, 370px);
   aspect-ratio: 0.8;
   padding: 7px;
   overflow: hidden;
@@ -324,6 +327,30 @@ a { color: inherit; }
   transform: rotate(1.8deg);
 }
 .portrait-frame img { height: 100%; object-fit: cover; object-position: center; border-radius: inherit; }
+
+.work-fragment {
+  position: absolute;
+  z-index: 1;
+  width: 168px;
+  margin: 0;
+  padding: 7px 7px 6px;
+  overflow: hidden;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(65,43,92,.68);
+  border-radius: 12px;
+  box-shadow: 5px 7px 0 rgba(77,52,108,.14), 0 12px 24px rgba(77,52,108,.12);
+}
+.work-fragment img { height: 104px; object-fit: cover; border-radius: 7px; filter: saturate(.78) contrast(.96); }
+.work-fragment figcaption {
+  padding: 5px 2px 0;
+  color: #57436e;
+  font-family: var(--font-accent), "Trebuchet MS", sans-serif;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.work-fragment-game { top: 5%; right: -3%; transform: rotate(6deg); }
+.work-fragment-tool { bottom: 3%; left: -5%; transform: rotate(-6deg); }
 
 .sprite {
   display: inline-block;
@@ -337,10 +364,10 @@ a { color: inherit; }
 .sticker-butterfly { background-position: 100% 0; }
 .sticker-star { background-position: 0 100%; }
 .sticker-heart { background-position: 100% 100%; }
-.star-one { position: absolute; top: 8%; left: -3%; z-index: 3; width: 68px; height: 68px; }
-.pixel-butterfly { position: absolute; top: 5%; right: -1%; z-index: 3; width: 66px; height: 66px; }
-.hero-flower, .hero-leaf { position: absolute; z-index: 3; filter: drop-shadow(2px 3px 0 rgba(51,67,38,.18)); }
-.hero-flower-left { width: 94px; height: 94px; left: -10%; bottom: 2%; color: #7853ad; stroke-width: 1.2; }
+.star-one { position: absolute; top: 8%; left: -3%; z-index: 4; width: 68px; height: 68px; }
+.pixel-butterfly { position: absolute; top: -2%; right: -1%; z-index: 4; width: 66px; height: 66px; }
+.hero-flower, .hero-leaf { position: absolute; z-index: 4; filter: drop-shadow(2px 3px 0 rgba(51,67,38,.18)); }
+.hero-flower-left { width: 78px; height: 78px; top: 42%; left: 0; color: #7853ad; stroke-width: 1.2; }
 .hero-leaf { width: 58px; height: 58px; right: -3%; bottom: 26%; color: #5c7d45; stroke-width: 1.25; transform: rotate(-18deg); }
 
 .featured {
@@ -736,6 +763,9 @@ a { color: inherit; }
   .hero { grid-template-columns: 1fr; padding: 50px; }
   .portrait-stage { min-height: 380px; }
   .portrait-frame { max-width: 340px; }
+  .work-fragment-game { right: 7%; }
+  .work-fragment-tool { left: 7%; }
+  .hero-flower-left { left: 8%; }
   .featured { height: auto; grid-template-columns: 1fr; }
   .featured-art { min-height: 330px; }
   .project-grid { grid-template-columns: 1fr 1fr; }
@@ -756,11 +786,19 @@ a { color: inherit; }
   .nav-links a { padding: 5px 6px; font-size: 0.96rem; }
   .nav-links a::before { display: none; }
   .hero { min-height: auto; padding: 34px 24px 24px; gap: 24px; }
-  .hero::after { display: none; }
-  .hero h1 { font-size: clamp(3.6rem, 17.5vw, 5.4rem); }
+  .hero .eyebrow { display: flex; flex-wrap: wrap; gap: 0 5px; font-size: .98rem; line-height: 1.35; }
+  .hero h1 { max-width: 100%; font-size: clamp(2.75rem, 12.8vw, 4.7rem); }
+  .hero-intro { max-width: 100%; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-current { margin-top: 24px; }
   .portrait-stage { min-height: 330px; }
   .portrait-frame { width: min(88%, 310px); }
+  .work-fragment { width: 128px; padding: 5px; }
+  .work-fragment img { height: 78px; }
+  .work-fragment figcaption { font-size: .67rem; }
+  .work-fragment-game { top: 0; right: -2%; }
+  .work-fragment-tool { bottom: 0; left: -2%; }
+  .hero-flower-left { display: none; }
   .featured-art { min-height: 240px; }
   .featured-copy { padding: 40px 26px 72px; }
   .featured h2 { font-size: clamp(3rem, 14.5vw, 4.5rem); }
