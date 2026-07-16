@@ -3,16 +3,16 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shayleesmith.com/</loc>
-    <lastmod>2026-07-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://shayleesmith.com/images/polaroid.jpg</image:loc>
-      <image:caption>Portrait of Shaylee Smith, indie game developer and digital artist</image:caption>
+      <image:loc>https://shayleesmith.com/images/shaylee-portrait-800.webp</image:loc>
+      <image:caption>Shaylee Smith, indie game developer and digital artist, inside an iridescent oval portrait</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://shayleesmith.com/images/static-symbiosis-banner.webp</image:loc>
-      <image:caption>Static Symbiosis botanical design shop banner</image:caption>
+      <image:loc>https://shayleesmith.com/images/botanical-collage.webp</image:loc>
+      <image:caption>Static Symbiosis natural-history collage with mushrooms, insects, fern, and violet flowers</image:caption>
     </image:image>
   </url>
   <url><loc>https://shayleesmith.com/projects/final-settlement.html</loc><lastmod>2026-07-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/final-settlement.jpg</image:loc><image:caption>Final Settlement noir browser mystery artwork</image:caption></image:image></url>
