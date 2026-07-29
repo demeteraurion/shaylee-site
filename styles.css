@@ -705,9 +705,11 @@ a { color: inherit; }
   border: 1px solid var(--ink);
   border-radius: 999px;
   box-shadow: 0 0 0 rgba(23,19,34,0);
-  font-family: var(--font-body), "Segoe UI", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.16rem);
-  font-weight: 600;
+  font-family: var(--font-accent), "Trebuchet MS", sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   line-height: 1.2;
   text-decoration: none;
   transition: transform 170ms ease, box-shadow 170ms ease, background-color 170ms ease, color 170ms ease;

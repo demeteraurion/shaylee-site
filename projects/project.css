@@ -45,6 +45,7 @@
 }
 
 .theme-veilborn { --project-accent: #a968ff; --project-deep: #5f3492; --project-soft: rgba(169,104,255,.19); --project-shadow: rgba(255,98,176,.55); }
+.theme-deep-sea { --project-accent: #54d9ff; --project-deep: #164f69; --project-soft: rgba(84,217,255,.2); --project-shadow: rgba(15,43,62,.44); }
 .theme-final-settlement { --project-accent: #54d9ff; --project-deep: #176780; --project-soft: rgba(84,217,255,.2); --project-shadow: rgba(169,104,255,.52); }
 .theme-root-record { --project-accent: #bce94d; --project-deep: #526b1e; --project-soft: rgba(200,255,56,.2); --project-shadow: rgba(84,217,255,.5); }
 .theme-flutterjar { --project-accent: #ff62b0; --project-deep: #934064; --project-soft: rgba(255,98,176,.18); --project-shadow: rgba(84,217,255,.5); }
