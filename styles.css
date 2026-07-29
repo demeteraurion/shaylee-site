@@ -511,7 +511,7 @@ a { color: inherit; }
 .earlier-work:focus-visible { outline: 3px solid var(--pink); outline-offset: 5px; }
 .earlier-work svg { width: 16px; height: 16px; }
 
-.systems-section { padding-block: 34px 72px; }
+.systems-section { margin-top: clamp(42px, 6vw, 80px); padding-block: 34px 72px; }
 .section-intro {
   max-width: 720px;
   margin: -8px auto 30px;
