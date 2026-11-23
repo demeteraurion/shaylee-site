@@ -345,6 +345,7 @@ h3 {
   content: none;
 }
 .visual img { width: 100%; aspect-ratio: 16 / 10; border-radius: var(--radius); object-fit: cover; }
+.visual-screenshot img { aspect-ratio: auto; }
 
 .story { position: relative; isolation: isolate; padding: 44px 0 90px; }
 .story-grid {
