@@ -96,6 +96,7 @@ a:focus-visible { outline: 3px solid var(--violet); outline-offset: 4px; }
 .skip-link:focus { transform: translateY(0); }
 
 .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+.project-banner { display: block; height: auto; margin-top: 24px; border: 1px solid var(--project-deep); border-radius: var(--radius); }
 
 .topbar {
   position: sticky;

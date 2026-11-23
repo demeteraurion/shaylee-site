@@ -22,5 +22,19 @@ jobs:
           curl --fail --silent --show-error https://shayleesmith.com/robots.txt > /dev/null
           curl --fail --silent --show-error https://shayleesmith.com/sitemap.xml > /dev/null
           test "$(curl --silent --output /dev/null --write-out '%{http_code}' https://shayleesmith.com/definitely-not-a-real-page)" = "404"
+      - name: Verify deployed portfolio content
+        shell: bash
+        run: |
+          curl --fail --silent --show-error https://shayleesmith.com/ -o homepage.html
+          grep -F 'id="development-title">In development' homepage.html
+          grep -F 'projects/life-quest-rpg.html' homepage.html
+          curl --fail --silent --show-error https://shayleesmith.com/projects/life-quest-rpg.html -o life-quest.html
+          grep -F 'currently unavailable to play publicly' life-quest.html
+          curl --fail --silent --show-error https://shayleesmith.com/projects/veilborn.html -o veilborn.html
+          grep -F '<dd>Retired</dd>' veilborn.html
+          if grep -Fq 'demeteraurion.itch.io/veilborn' veilborn.html; then
+            echo 'VEILBORN archive still points visitors to the retired build'
+            exit 1
+          fi
       - name: Run Lighthouse against the live site
         run: npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.json

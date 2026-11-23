@@ -3,7 +3,9 @@
     "collect": {
       "url": [
         "https://shayleesmith.com/",
-        "https://shayleesmith.com/projects/final-settlement.html"
+        "https://shayleesmith.com/projects/final-settlement.html",
+        "https://shayleesmith.com/projects/life-quest-rpg.html",
+        "https://shayleesmith.com/projects/veilborn.html"
       ],
       "numberOfRuns": 1,
       "settings": {

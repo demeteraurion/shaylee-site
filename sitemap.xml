@@ -3,22 +3,23 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shayleesmith.com/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://shayleesmith.com/images/shaylee-portrait-800.webp</image:loc>
-      <image:caption>Shaylee Smith, indie game developer and digital artist, inside an iridescent oval portrait</image:caption>
+      <image:loc>https://shayleesmith.com/images/shaylee-anime-800.jpg</image:loc>
+      <image:caption>Anime-style portrait of Shaylee Smith with short brown hair and gold glasses</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://shayleesmith.com/images/botanical-collage.webp</image:loc>
       <image:caption>Static Symbiosis natural-history collage with mushrooms, insects, fern, and violet flowers</image:caption>
     </image:image>
   </url>
-  <url><loc>https://shayleesmith.com/projects/final-settlement.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/final-settlement.jpg</image:loc><image:caption>Final Settlement noir browser mystery artwork</image:caption></image:image></url>
-  <url><loc>https://shayleesmith.com/projects/below-the-known.html</loc><lastmod>2026-07-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/below-the-known.jpg</image:loc><image:caption>Below the Known deep-sea game artwork</image:caption></image:image></url>
-  <url><loc>https://shayleesmith.com/projects/veilborn.html</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/veilborn.jpg</image:loc><image:caption>VEILBORN playable eldritch management game artwork</image:caption></image:image></url>
+  <url><loc>https://shayleesmith.com/projects/final-settlement.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/final-settlement.jpg</image:loc><image:caption>Final Settlement noir browser mystery artwork</image:caption></image:image></url>
+  <url><loc>https://shayleesmith.com/projects/below-the-known.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/below-the-known.jpg</image:loc><image:caption>Below the Known deep-sea game artwork</image:caption></image:image><image:image><image:loc>https://shayleesmith.com/images/below-the-known-dive.jpg</image:loc><image:caption>Underwater camera viewfinder in Below the Known</image:caption></image:image></url>
+  <url><loc>https://shayleesmith.com/projects/veilborn.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://shayleesmith.com/images/veilborn.jpg</image:loc><image:caption>VEILBORN retired eldritch management game artwork</image:caption></image:image></url>
   <url><loc>https://shayleesmith.com/projects/root-record.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://shayleesmith.com/projects/flutterjar.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://shayleesmith.com/projects/ashgrove-ritual.html</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://shayleesmith.com/projects/life-quest-rpg.html</loc><lastmod>2026-11-23</lastmod><image:image><image:loc>https://shayleesmith.com/images/life-quest-tavern.jpg</image:loc><image:caption>The Wayfarer’s Rest tavern and quest board in Life Quest RPG</image:caption></image:image><image:image><image:loc>https://shayleesmith.com/images/life-quest-banner.jpg</image:loc><image:caption>Life Quest RPG title over a lantern-lit inn and valley at dusk</image:caption></image:image></url>
 </urlset>
